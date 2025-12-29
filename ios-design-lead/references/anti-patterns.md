@@ -521,6 +521,37 @@ These anti-patterns prevent users from completing their jobs, even when the UI i
 </anti_pattern>
 </job_completion_antipatterns>
 
+<proven_patterns>
+## Proven Patterns (Do This)
+
+<pattern name="Gradient Fade for Floating UI">
+**Use case:** Bottom toolbar or buttons floating over scrollable content
+
+**The pattern:**
+```swift
+// Gradient fade: 69% solid at bottom, fades to 98% transparent
+LinearGradient(
+    colors: [
+        Color(.systemBackground),
+        Color(.systemBackground),
+        Color(.systemBackground).opacity(0.98)
+    ],
+    startPoint: .bottom,
+    endPoint: .top
+)
+```
+
+**Why it works:**
+- **Fade = content continues** — Gradient signals scrollable content exists above
+- **Solid edge = safe landing** — Bottom portion gives buttons stable visual anchor
+- **Subconscious trust** — Users recognize "this is how your app works"
+
+**Rule:** When adding floating UI over scrollable content, copy the exact gradient stops from established system. Don't guess new values.
+
+**Already tuned in:** Bottom toolbar (69% solid, fade to 98%)
+</pattern>
+</proven_patterns>
+
 <meta_principle>
 ## The Meta-Rule
 
