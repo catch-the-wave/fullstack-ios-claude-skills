@@ -41,6 +41,10 @@ Backend architecture, API design, and ML/AI systems expertise.
 
 **Core principle:** Backend owns business logic, clients stay dumb.
 
+**Agents:**
+- `codebase-analyzer` — Base agent that builds persistent knowledge (`.claude/CODEBASE.md`)
+- `security-auditor` — Security scans with vulnerability tracking (`.claude/SECURITY.md`)
+
 ## Philosophy
 
 ### Rules Are Strong Defaults, Not Laws
@@ -136,7 +140,8 @@ Restart Claude Code to load the skills.
     ├── references/
     │   └── endpoint-patterns.md
     └── agents/
-        └── security-auditor.md
+        ├── codebase-analyzer.md  # Base: persistent knowledge
+        └── security-auditor.md   # Security + vulnerability tracking
 ```
 
 ## Key Learnings Encoded
@@ -151,8 +156,10 @@ These skills capture hard-won lessons:
 | "Simplest" isn't simple if users can't find it | ajtbd grounding checks |
 | Magic params = anti-pattern | system-architect |
 | Data shuttling = architecture smell | system-architect |
+| LLM service copy-paste = abstraction needed | system-architect |
 | Consistency > Novelty | ios-design-lead |
 | AJTBD is a tool, not an oracle | ajtbd |
+| Agents need persistent knowledge | codebase-analyzer |
 
 ## Contributing
 

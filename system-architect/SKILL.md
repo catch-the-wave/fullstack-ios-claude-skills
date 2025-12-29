@@ -561,6 +561,48 @@ POST /store { "embedding": [512 floats] }
 
 **Fix:** Backend computes embedding. Client sends content only.
 </anti_pattern>
+
+<anti_pattern name="llm-service-duplication">
+**LLM Service Copy-Paste**
+
+Multiple LLM service classes with identical provider fallback chains, differing only in prompts.
+
+```python
+# Bad: Two nearly identical classes
+class Enhancer:
+    async def process(self, text):
+        try: return await self._try_groq(text)  # Same
+        except: return await self._try_openai(text)  # Same
+
+class ParagraphSplitter:
+    async def process(self, text):
+        try: return await self._try_groq(text)  # Same
+        except: return await self._try_openai(text)  # Same
+```
+
+**Smell:** If you're copy-pasting a class and only changing prompt strings, you need abstraction.
+
+**Fix:** Composition with prompt injection:
+
+```python
+class LLMProcessor:
+    def __init__(self, prompt_template: str, operation_type: str):
+        self.prompt = prompt_template
+        self.operation = operation_type
+
+    async def process(self, text: str) -> str:
+        try:
+            return await self._try_groq(text)
+        except:
+            return await self._try_openai(text)
+
+# Usage - single implementation, multiple behaviors
+enhancer = LLMProcessor(ENHANCE_PROMPT, "PRETTIFY")
+splitter = LLMProcessor(SPLIT_PROMPT, "SPLIT_PARAGRAPHS")
+```
+
+**Rule:** N services with 90% identical code = 1 service with N configurations.
+</anti_pattern>
 </anti_patterns>
 
 <self_improvement>
