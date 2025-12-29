@@ -486,6 +486,39 @@ These anti-patterns prevent users from completing their jobs, even when the UI i
 
 **Rule:** Surface contextual actions when trigger conditions are met (e.g., 2+ cards selected → show Combine option)
 </anti_pattern>
+<anti_pattern name="Inventing Patterns When They Exist">
+**Problem:** Creating custom button styling (25pt capsule, 50pt height) when app already has established patterns (12pt corners, standard padding)
+
+**Why it fails:**
+- Users build muscle memory around existing UI patterns
+- Breaking patterns creates cognitive friction
+- Fixed heights (50pt) are rigid, create awkward gaps
+- Inconsistency looks unpolished
+
+**Rule:** Before designing ANY new component:
+1. Search codebase for similar components
+2. Copy-paste styling from proven patterns
+3. Use `.padding()` (adapts to content/accessibility) over explicit heights
+
+**The hierarchy:**
+- Consistency > Novelty
+- Standard padding > Explicit heights
+- Existing patterns > New invention
+
+**Before:**
+```swift
+// ❌ Invented new style
+.frame(height: 50)
+.cornerRadius(25)
+```
+
+**After:**
+```swift
+// ✅ Matches existing Telegram auth button
+.padding()
+.cornerRadius(12)
+```
+</anti_pattern>
 </job_completion_antipatterns>
 
 <meta_principle>
