@@ -427,6 +427,33 @@ All in `workflows/`:
 </core_principles>
 </inspirations>
 
+<self_improvement>
+## Self-Improvement Loop
+
+**Rules are strong defaults, not laws.** Break them when reality demands it.
+
+**After each task, reflect:**
+1. What worked well?
+2. What was awkward or forced?
+3. Did any principle clash with reality?
+4. Did I learn something not captured in this skill?
+
+**Surface learnings explicitly:**
+```
+📝 **Learning:** [what I observed]
+🔧 **Skill update?** [yes/no] — [specific change to make]
+```
+
+**When to propose updates:**
+- A principle consistently doesn't apply
+- Found a better pattern through practice
+- Discovered a new anti-pattern
+- User corrected me (capture the correction)
+
+**The deal:** I think for myself, learn iteratively, and flag when
+instructions should evolve. You approve, reject, or refine.
+</self_improvement>
+
 <success_criteria>
 A successful ios-design-lead session:
 - Produces native-feeling iOS interfaces that feel alive

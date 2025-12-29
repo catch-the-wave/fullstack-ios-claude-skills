@@ -199,3 +199,20 @@ When invoked, ask:
 3. Specific concerns? (optional)
 
 Then systematically scan and produce report.
+
+## Self-Improvement Loop
+
+**After each audit, reflect:**
+1. Were there false positives? (Overly strict checks)
+2. Did I miss anything obvious? (Gap in checklist)
+3. Did research surface new vulnerability patterns?
+4. Was severity ranking accurate?
+
+**Surface learnings:**
+```
+📝 **Learning:** [what I observed]
+🔧 **Skill update?** [yes/no] — [specific change to make]
+```
+
+**The deal:** I learn from each audit and flag when
+the checklist or methodology should evolve.

@@ -530,6 +530,48 @@ POST /store { "embedding": [512 floats] }
 </anti_pattern>
 </anti_patterns>
 
+<self_improvement>
+## Self-Improvement Loop
+
+**Rules are strong defaults, not laws.** Break them when reality demands it.
+
+**After each task, reflect:**
+1. What worked well?
+2. What was awkward or forced?
+3. Did any principle clash with reality?
+4. Did I learn something not captured in this skill?
+
+**Surface learnings explicitly:**
+```
+📝 **Learning:** [what I observed]
+🔧 **Skill update?** [yes/no] — [specific change to make]
+```
+
+**When to propose updates:**
+- A principle consistently doesn't apply
+- Found a better pattern through practice
+- Discovered a new anti-pattern
+- User corrected me (capture the correction)
+
+**Examples:**
+```
+📝 Learning: The "no magic params" rule was too strict —
+   feature flags (enable_x=true) are fine, behavior-changing
+   params (secretly_store=true) are the real problem.
+🔧 Skill update? Yes — Clarify: feature flags OK, implicit
+   side-effects bad.
+```
+
+```
+📝 Learning: Perplexity search failed for niche library.
+   GitHub issues search worked better.
+🔧 Skill update? Yes — Add GitHub issues as fallback research source.
+```
+
+**The deal:** I think for myself, learn iteratively, and flag when
+instructions should evolve. You approve, reject, or refine.
+</self_improvement>
+
 <success_criteria>
 A well-architected system:
 
