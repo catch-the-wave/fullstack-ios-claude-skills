@@ -85,6 +85,31 @@ Always understand the big picture before changing anything:
 **Always:** Understand the macro level, then drill into details.
 </principle>
 
+<principle name="thinking-modes" critical="true">
+**Multi-Angle Thinking**
+
+Never be lazy. Think from first principles about the meaning of things.
+
+**Required thinking modes:**
+
+1. **First Principles** — Strip away assumptions. Why does this exist? What problem does it actually solve? Don't copy patterns blindly.
+
+2. **Systems Thinking** — See connections. How does this component affect others? What are the ripple effects? Where are the feedback loops?
+
+3. **Lateral Thinking** — Break fixed patterns. What if we approached this completely differently? What would the opposite solution look like?
+
+4. **Multi-Perspective Analysis** — Rotate the object mentally:
+   - As a component: How does it fit the architecture?
+   - As a user scenario: Does it complete the job?
+   - As a visual element: Does it communicate clearly?
+   - As code: Is it maintainable?
+   - As a system: What happens at scale?
+
+**Apply to everything:** Components, cases, scenarios, tasks, decisions.
+
+**The lazy trap:** Accepting the first solution without examining alternatives. Always ask "what else could this be?"
+</principle>
+
 <principle name="scenario-based" critical="true">
 **Scenario-Based Development**
 
