@@ -360,9 +360,9 @@ Request → Check DB (persisted cache) → Hit? Return
 </ml_ai_principles>
 
 <research_workflow>
-## Research Workflow (MANDATORY)
+## Research Workflow (MANDATORY - USE PERPLEXITY)
 
-**YOU MUST use WebSearch tool when:**
+**YOU MUST research via Perplexity when:**
 - Introducing new technology/library
 - Uncertain about best practice
 - Making performance-critical decisions
@@ -372,47 +372,58 @@ Request → Check DB (persisted cache) → Hit? Return
 
 **DO NOT guess or rely on training data for current best practices. SEARCH FIRST.**
 
+**HOW TO USE PERPLEXITY:**
+```
+WebFetch(
+  url: "https://www.perplexity.ai/search?q=pgvector+vs+pinecone+production+2024",
+  prompt: "Extract the key findings, trade-offs, and recommendations"
+)
+```
+
 **Step 1: Formulate specific query**
 ```
 Bad: "How do I do embeddings?"
 Good: "pgvector vs pinecone production experience 2024"
 ```
 
-**Step 2: Actually execute searches**
-Use WebSearch tool NOW with queries like:
-- "[specific topic] best practices 2024"
-- "[technology] vs [alternative] production"
-- "[pattern] anti-patterns lessons learned"
-- "[library] problems issues github"
+**Step 2: Query Perplexity**
+```
+WebFetch(
+  url: "https://www.perplexity.ai/search?q=[URL-encoded+query]",
+  prompt: "Summarize: best practices, trade-offs, problems reported, recommendations"
+)
+```
 
 **Step 3: Search for failure stories**
 ```
-WebSearch: "[technology] failed production postmortem"
-WebSearch: "[pattern] mistakes learned"
+WebFetch(
+  url: "https://www.perplexity.ai/search?q=[technology]+failed+production+postmortem",
+  prompt: "What problems have people encountered? What are the warnings?"
+)
 ```
 
 **Step 4: Synthesize into trade-off table**
-| Option | Source Says | Applies Here? |
-|--------|-------------|---------------|
+| Option | Perplexity Says | Applies Here? |
+|--------|-----------------|---------------|
 | A | Fast but memory-heavy | Yes |
 | B | Reliable but slower | Maybe |
 
 **Step 5: Recommend with citations**
-"Based on [source], I recommend X because Y. The alternative Z was rejected because [source showed problem]."
+"Based on Perplexity research, I recommend X because Y. The alternative Z was rejected because [sources showed problem]."
 
 **Example - triggered automatically:**
 ```
 User: "Should we use Pinecone or pgvector?"
 
 You MUST:
-1. WebSearch "pgvector vs pinecone 2024 comparison"
-2. WebSearch "pgvector production experience scale"
-3. WebSearch "pinecone cost production"
-4. Synthesize findings
-5. Recommend with evidence
+1. WebFetch perplexity.ai "pgvector vs pinecone 2024 comparison"
+2. WebFetch perplexity.ai "pgvector production scale limits"
+3. WebFetch perplexity.ai "pinecone pricing production costs"
+4. Synthesize findings into trade-off table
+5. Recommend with evidence from search
 ```
 
-**Rule:** If you're about to write "typically" or "generally" about current tech, STOP and WebSearch instead.
+**Rule:** If you're about to write "typically" or "generally" about current tech, STOP and query Perplexity instead.
 </research_workflow>
 
 <thinking_process>
