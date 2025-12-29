@@ -416,10 +416,100 @@ Learn from common mistakes. These anti-patterns appear in poorly designed iOS ap
 **Source:** [iOS Design Rules to Break - NN/g](https://www.nngroup.com/articles/4-ios-rules-break/)
 </nielsen_norman_findings>
 
+<job_completion_antipatterns>
+## Job Completion Mistakes
+
+These anti-patterns prevent users from completing their jobs, even when the UI is technically "correct."
+
+<anti_pattern name="Word Repetition">
+**Problem:** "Combine" in title, nav button, AND description (3x)
+
+**Why it fails:**
+- Each repetition dilutes meaning
+- Visual noise
+- Wastes screen space
+
+**Rule:** Action word once in title, once on primary button. Never more.
+</anti_pattern>
+
+<anti_pattern name="Navigation Bar as Action Bar">
+**Problem:** Primary CTA in top navigation bar
+
+**Why it fails:**
+- Nav bar is for orientation ("where am I?"), not actions
+- Critical actions belong in thumb zone
+- Hard to reach on large phones
+
+**Rule:** Move primary CTAs to bottom on modal sheets
+</anti_pattern>
+
+<anti_pattern name="Negative Framing">
+**Problem:** "Cards to Delete" instead of "Cards to Combine"
+
+**Why it fails:**
+- Focuses on loss, not gain
+- Creates anxiety
+- Users came to consolidate, not destroy
+
+**Rule:** Frame around the outcome user wants, not the side effect
+</anti_pattern>
+
+<anti_pattern name="Process Preview Instead of Result Preview">
+**Problem:** Preview shows nested chrome (cards within cards)
+
+**Why it fails:**
+- Shows mechanism, not destination
+- Confusing hierarchy
+- Doesn't inspire confidence
+
+**Rule:** Preview the destination state, not the process
+</anti_pattern>
+
+<anti_pattern name="Stats Without Context">
+**Problem:** "2 Total Capsules, 0 Unique Tags" - so what?
+
+**Why it fails:**
+- Doesn't inform decision
+- Visual clutter
+- Cognitive load without value
+
+**Rule:** Only show information that changes user's choice
+</anti_pattern>
+
+<anti_pattern name="Depth Hiding Critical Actions">
+**Problem:** Combine buried 2+ taps deep
+
+**Why it fails:**
+- Depth ≠ importance
+- Critical actions should surface when needed
+- Users won't hunt for features
+
+**Rule:** Surface contextual actions when trigger conditions are met (e.g., 2+ cards selected → show Combine option)
+</anti_pattern>
+</job_completion_antipatterns>
+
+<meta_principle>
+## The Meta-Rule
+
+**Every screen element should answer: "Does this help the user complete their job?"**
+
+If the answer is no, it's noise. Remove it.
+
+This applies to:
+- Labels and text
+- Buttons and controls
+- Stats and metadata
+- Preview content
+- Navigation elements
+
+If it doesn't serve the job, it actively hurts the job by competing for attention.
+</meta_principle>
+
 <sources>
 Based on research from:
 - [iOS Design Rules to Break - Nielsen Norman Group](https://www.nngroup.com/articles/4-ios-rules-break/)
 - [Mobile Design Anti-Patterns - SitePoint](https://www.sitepoint.com/examples-mobile-design-anti-patterns/)
 - [Bad App Design Mistakes - UXPin](https://www.uxpin.com/studio/blog/bad-app-design/)
 - [Common UI Design Mistakes - Mindinventory](https://www.mindinventory.com/blog/ui-design-mistakes/)
+- Mindcraft "Combine Cards" case study (2024)
 </sources>

@@ -156,3 +156,57 @@ Or suggest the product-analyst agent for deep, autonomous analysis with full boo
 | "What do customers want?" | "What jobs are customers trying to complete?" |
 
 Remember: **Jobs are primary. Everything else is derivative.**
+
+## Grounding AJTBD in UI Reality
+
+**CRITICAL:** Job analysis must be validated against real UI constraints. Theoretical job-correctness is worthless if users can't find or access the feature.
+
+### The Grounding Checklist
+
+When recommending where to place a feature based on job analysis:
+
+1. **Discoverability** - Can users tell this is interactive?
+   - No borders = users won't try long-press
+   - Hidden gestures = undiscoverable features
+
+2. **Tap Count** - How many taps to complete the job?
+   - 3+ taps = not "convenient" no matter what job analysis says
+   - Count the actual path, not the theoretical path
+
+3. **Existing Patterns** - What do users already know is tappable?
+   - Leverage existing mental models
+   - Don't fight established patterns
+
+4. **Affordances** - Does the UI signal interactivity?
+   - Borders, shadows, icons signal "tap me"
+   - Plain text doesn't
+
+### Case Study: The Capsule Menu Failure
+
+**AJTBD said:** "Capsule-level context menu matches the job perfectly"
+
+**Reality check failed:**
+- Capsules have no borders → users don't know they're tappable
+- 3+ taps to access → not "convenient" at all
+- Cards already have discoverable context menus → users know that pattern
+
+**The lesson:** "Simplest" implementation isn't simple if users can't find it.
+
+### Framing: Outcome vs Side Effect
+
+**Wrong framing:** "Cards to Delete" (focuses on loss)
+**Right framing:** "Cards to Combine" (focuses on outcome)
+
+Users came to consolidate, not destroy. Frame around the job outcome, not the mechanism's side effects.
+
+### The Meta-Rule
+
+**Every UI recommendation should answer: "Can users actually find and use this?"**
+
+If the answer is uncertain:
+- Check existing UI patterns
+- Count tap depth
+- Verify visual affordances
+- Test with real users
+
+Job analysis informs WHAT to build. UI reality determines WHERE to put it.
