@@ -110,6 +110,35 @@ Never be lazy. Think from first principles about the meaning of things.
 **The lazy trap:** Accepting the first solution without examining alternatives. Always ask "what else could this be?"
 </principle>
 
+<principle name="semantic-identity" critical="true">
+**Semantic Identity Before Features**
+
+"What IS this thing?" comes before "What features does it need?"
+
+**The Sharp Question:** Find the fork that determines everything downstream.
+
+Example: "Is Combine stitching torn paper back together, or making a collage from clippings?"
+
+This single question determines:
+- UI complexity
+- Default behaviors
+- What we call it
+- User expectations
+
+**Naming reveals mental models:**
+- "Combine" sounds like merge/restore
+- "Synthesize" sounds like creation
+- Wrong name → wrong mental model → wrong UI → confused users
+
+**The order:**
+1. Find the sharp question (the categorical fork)
+2. Answer it (make the decision)
+3. Name it correctly (meaning before features)
+4. THEN design features that flow from the identity
+
+**Never:** Jump to feature design before establishing what the thing IS.
+</principle>
+
 <principle name="scenario-based" critical="true">
 **Scenario-Based Development**
 

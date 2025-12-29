@@ -210,3 +210,49 @@ If the answer is uncertain:
 - Test with real users
 
 Job analysis informs WHAT to build. UI reality determines WHERE to put it.
+
+## AJTBD is a Tool, Not an Oracle
+
+**CRITICAL:** The framework gives reasonable answers for assumed jobs. But it doesn't question the assumptions themselves. Frameworks can reinforce shallow thinking if you feed them shallow premises.
+
+### The Semantic Identity Problem
+
+**Wrong order:**
+1. "What features does this need?"
+2. Apply AJTBD to feature list
+3. Get reasonable-sounding but shallow answers
+
+**Right order:**
+1. "What IS this thing?" (semantic identity)
+2. Name it correctly (naming reveals mental models)
+3. THEN apply AJTBD to the correctly-identified thing
+
+### First Principles = Question the Category
+
+Don't ask: "Should combine have a date picker?"
+Ask first: **"What IS combine?"**
+
+### The Sharp Question Technique
+
+Find the fork that determines everything downstream.
+
+**Example - Combine Cards:**
+> "Is this stitching torn paper back together, or making a collage from clippings?"
+
+This single question determines:
+- UI complexity
+- Default behaviors
+- What we call it
+- User expectations
+- The entire feature design
+
+**Before running any AJTBD analysis, find your sharp question.** If you can't articulate the fork, you're not ready for framework analysis.
+
+### Naming Reveals Mental Models
+
+"Combine Cards" sounds like merge/restore.
+If it's actually synthesis/creation, the name itself is misleading users AND the team.
+
+**Wrong name → wrong job analysis → wrong features → confused users**
+
+Fix the name first. Features flow from meaning, not vice versa.
