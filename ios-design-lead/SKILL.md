@@ -139,6 +139,42 @@ This single question determines:
 **Never:** Jump to feature design before establishing what the thing IS.
 </principle>
 
+<principle name="outside-in" critical="true">
+**Outside-In Thinking**
+
+Start with user intent, not system constraints.
+
+**Wrong (inside-out):** "How can the data model support this?"
+**Right (outside-in):** "What is the user trying to do?"
+
+Data model should follow user intent, not constrain it.
+
+**The unit of work matters:**
+Ask: What does the USER see as the atomic unit?
+- Developer sees: capsule (data object)
+- User sees: card (semantic unit, "I captured a task")
+
+Design for the user's unit, not the system's unit.
+
+**Same UI, different jobs:**
+Both can coexist:
+- Card AS task → single thing to complete
+- Card WITH task capsules → checklist of items
+
+These look similar but serve different jobs. Recognize which one user needs.
+
+**Friction reveals model mismatch:**
+> "I record a voice task but have to add a task capsule"
+
+This friction = model doesn't match intent. Friction is a SYMPTOM.
+
+When you feel friction:
+1. Don't patch the UI
+2. Question the underlying model
+3. Ask: "What does the user think they're doing?"
+4. Align the model to that
+</principle>
+
 <principle name="scenario-based" critical="true">
 **Scenario-Based Development**
 

@@ -256,3 +256,42 @@ If it's actually synthesis/creation, the name itself is misleading users AND the
 **Wrong name → wrong job analysis → wrong features → confused users**
 
 Fix the name first. Features flow from meaning, not vice versa.
+
+## Outside-In: User Intent Over System Constraints
+
+**Wrong (inside-out):** "How can the data model support this job?"
+**Right (outside-in):** "What job is the user trying to do?"
+
+Data model should follow user intent, not constrain it.
+
+### The Unit of Work
+
+Ask: What does the USER see as the atomic unit?
+
+**Example:**
+- Developer sees: capsule (data object in the model)
+- User sees: card (semantic unit — "I captured a task")
+
+When analyzing jobs, use the user's unit, not the system's unit.
+
+### Same UI Element, Different Jobs
+
+The same visual component can serve different jobs:
+- Card AS task → single thing to complete (the card IS the task)
+- Card WITH task capsules → checklist of items (the card CONTAINS tasks)
+
+These look similar but serve completely different jobs. Both can coexist. Recognize which one the user needs in context.
+
+### Friction = Model Mismatch
+
+> "I record a voice task but then have to add a task capsule"
+
+This friction reveals the model doesn't match user intent.
+
+**Friction is a SYMPTOM, not the problem.**
+
+When you detect friction:
+1. Don't just smooth the UI
+2. Question the underlying model
+3. Ask: "What does the user think they're doing?"
+4. Realign the model to match their intent
