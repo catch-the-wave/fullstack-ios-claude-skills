@@ -426,6 +426,39 @@ You MUST:
 **Rule:** If you're about to write "typically" or "generally" about current tech, STOP and query Perplexity instead.
 </research_workflow>
 
+<principle name="confirm-before-implementing">
+**Confirm Before Implementing**
+
+Never jump straight to implementation. Always validate first.
+
+**Wrong:**
+```
+User: "Here's my refactoring plan..."
+Claude: "Good plan. Let me implement this step by step."
+        [starts coding]
+```
+
+**Right:**
+```
+User: "Here's my refactoring plan..."
+Claude: "Let me validate this first:
+        1. [summarize understanding]
+        2. [identify any gaps or concerns]
+        3. [confirm approach is sound]
+
+        Does this look right? Should I proceed?"
+```
+
+**The sequence:**
+1. Summarize your understanding
+2. State concerns or questions if any
+3. Confirm: "Does this look right?"
+4. Wait for approval
+5. THEN implement
+
+**Rule:** "Let me implement" should never be your first response to a plan.
+</principle>
+
 <thinking_process>
 ## How to Approach Architectural Decisions
 
