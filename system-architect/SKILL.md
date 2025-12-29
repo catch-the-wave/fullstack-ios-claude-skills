@@ -1,6 +1,6 @@
 ---
 name: system-architect
-description: Backend architecture and API design expertise. Use when designing APIs, data flows, client-server boundaries, or making architectural decisions. Catches anti-patterns and ensures clean separation of concerns.
+description: Backend architecture, API design, and ML/AI systems expertise. Use when designing APIs, data flows, ML pipelines, embeddings, vector DBs, or making architectural decisions. Researches best practices via Perplexity when uncertain.
 ---
 
 <essential_principles>
@@ -183,7 +183,224 @@ They're DIFFERENT data, not synced copies
 
 If you need sync, design it explicitly. Don't pretend two sources are one.
 </principle>
+
+<principle name="research-first">
+**Research Best Practices Before Deciding**
+
+When facing unfamiliar territory or uncertain about best practices:
+
+**Use Perplexity/WebSearch to research:**
+```
+WebSearch: "best practices [topic] 2024"
+WebSearch: "[technology] vs [alternative] tradeoffs"
+WebSearch: "[pattern] anti-patterns production"
+```
+
+**Research triggers:**
+- "I'm not sure if this is the right approach"
+- New technology/library being introduced
+- Architecture patterns you haven't used before
+- Performance-critical decisions
+- Security-sensitive designs
+
+**Research process:**
+1. Formulate specific question (not vague)
+2. Search for current best practices (include year)
+3. Look for production experience / war stories
+4. Synthesize into trade-off table
+5. Apply to your specific context
+
+**Rule:** Uncertainty + high stakes = research first. Don't guess.
+</principle>
 </essential_principles>
+
+<ml_ai_principles>
+## ML/AI System Design
+
+<principle name="embedding-strategy">
+**Embedding Architecture**
+
+**Where to compute embeddings:**
+- Backend (preferred) — Single source of truth, version control, no client dependency
+- Client — Only if offline-first is critical AND storage is acceptable
+
+**Where to store embeddings:**
+| Storage | Use Case | Trade-off |
+|---------|----------|-----------|
+| PostgreSQL + pgvector | Server-side search | Centralized, scalable |
+| SwiftData/SQLite | iOS local search | Offline, ~2KB per embedding |
+| Redis | Hot cache | Fast, volatile |
+| Pinecone/Weaviate | Large scale vector search | Managed, cost |
+
+**Embedding dimensions:**
+- 384-512 dims — Good balance (quality vs storage)
+- 1536 dims — OpenAI ada-002, higher quality, 3x storage
+- Smaller = faster search, larger = better semantic capture
+
+**Rule:** Backend computes, clients receive. Don't duplicate embedding logic.
+</principle>
+
+<principle name="model-selection">
+**Model Selection Trade-offs**
+
+Always build a trade-off table:
+
+| Model | Latency | Cost | Quality | Use Case |
+|-------|---------|------|---------|----------|
+| Local whisper | 2-5s | Free | Good | Privacy-critical |
+| Deepgram | <1s | $0.0043/min | Excellent | Production |
+| OpenAI Whisper API | 1-3s | $0.006/min | Excellent | Simple integration |
+
+**Decision factors:**
+1. Latency requirements (real-time vs batch)
+2. Cost at scale (calculate monthly)
+3. Quality for YOUR use case (test on real data)
+4. Privacy/compliance needs
+5. Reliability/uptime requirements
+
+**Rule:** Never pick a model without testing on YOUR data.
+</principle>
+
+<principle name="inference-pipeline">
+**Inference Pipeline Design**
+
+**Pattern: Async processing with immediate response**
+```
+User → API → Queue job → Return immediately
+              ↓
+         Worker picks up → Process → Store result
+              ↓
+         Webhook/push notification when done
+```
+
+**When to use sync vs async:**
+- Sync (<2s): User waits, simple, immediate feedback
+- Async (>2s): Queue it, notify when done
+
+**Pipeline components:**
+```
+Input → Validate → Preprocess → Model → Postprocess → Store → Notify
+         ↓           ↓           ↓          ↓
+      Reject     Normalize    Inference   Format
+      invalid    resize/trim  (the slow   results
+                              part)
+```
+
+**Rule:** If inference > 2 seconds, make it async. Users hate waiting.
+</principle>
+
+<principle name="rag-architecture">
+**RAG (Retrieval Augmented Generation) Patterns**
+
+**Basic RAG flow:**
+```
+Query → Embed query → Vector search → Get top-K docs →
+    → Stuff into prompt → LLM → Response
+```
+
+**Chunking strategies:**
+- Fixed size (512 tokens) — Simple, may break context
+- Semantic (by paragraph/section) — Better, more complex
+- Sliding window (overlap) — Good for long docs
+
+**Retrieval tuning:**
+- top-K: Start with 3-5, tune based on results
+- similarity threshold: 0.7-0.8 typical
+- reranking: Use cross-encoder for better precision
+
+**Anti-patterns:**
+- Stuffing too many docs (context overflow)
+- No chunking (entire docs don't fit)
+- Ignoring retrieval quality (garbage in, garbage out)
+
+**Rule:** RAG quality = retrieval quality. Tune retrieval first.
+</principle>
+
+<principle name="vector-db-selection">
+**Vector Database Selection**
+
+| Option | Best For | Trade-off |
+|--------|----------|-----------|
+| pgvector | <1M vectors, already using Postgres | Simple, no new infra |
+| Pinecone | Managed, scale to billions | Cost, vendor lock-in |
+| Weaviate | Self-hosted, hybrid search | Ops overhead |
+| Qdrant | Self-hosted, good performance | Ops overhead |
+| FAISS | In-memory, batch processing | No persistence |
+| ChromaDB | Prototyping, simple API | Not for production scale |
+
+**Start with pgvector if:**
+- You're already using PostgreSQL
+- < 1 million vectors
+- Don't need sub-millisecond latency
+
+**Rule:** Don't add infrastructure until you've outgrown pgvector.
+</principle>
+
+<principle name="caching-ml">
+**Caching ML Results**
+
+**What to cache:**
+- Embeddings (expensive to compute, stable)
+- Transcriptions (audio → text is slow)
+- Analysis results (emotion, category, etc.)
+
+**Cache invalidation:**
+- Embeddings: Cache forever (same input = same output)
+- Transcriptions: Cache forever (audio doesn't change)
+- LLM outputs: Be careful (may want freshness)
+
+**Where to cache:**
+```
+Request → Check DB (persisted cache) → Hit? Return
+                                    → Miss? Compute → Store → Return
+```
+
+**Rule:** If you're computing the same thing twice, cache it.
+</principle>
+</ml_ai_principles>
+
+<research_workflow>
+## Research Workflow (Perplexity/WebSearch)
+
+When uncertain about best practices, research before deciding.
+
+**Step 1: Identify the question**
+```
+Bad: "How do I do embeddings?"
+Good: "Embedding storage strategies for mobile apps with offline search 2024"
+```
+
+**Step 2: Search for current practices**
+```
+WebSearch: "[specific topic] best practices 2024"
+WebSearch: "[technology] production experience"
+WebSearch: "[pattern] vs [alternative] when to use"
+```
+
+**Step 3: Look for war stories**
+```
+WebSearch: "[technology] problems production"
+WebSearch: "[pattern] anti-patterns lessons learned"
+```
+
+**Step 4: Synthesize into trade-off table**
+| Option | Source Says | Applies to Us? |
+|--------|-------------|----------------|
+| A | Fast but memory-heavy | Yes, we have memory |
+| B | Slower but reliable | Maybe, need to test |
+
+**Step 5: Decide with evidence**
+Document: "We chose X because [research showed Y], and our constraints are [Z]."
+
+**When to research:**
+- New library/framework being introduced
+- Performance-critical architecture
+- Security-sensitive decisions
+- "I've heard conflicting advice about this"
+- Cost-sensitive (need to estimate at scale)
+
+**Rule:** 15 minutes of research can save days of wrong implementation.
+</research_workflow>
 
 <thinking_process>
 ## How to Approach Architectural Decisions
@@ -291,6 +508,8 @@ POST /store { "embedding": [512 floats] }
 
 <success_criteria>
 A well-architected system:
+
+**API/Backend:**
 - Each endpoint does one thing (name = behavior)
 - No data shuttling between endpoints
 - Backend owns business logic, clients stay dumb
@@ -300,4 +519,17 @@ A well-architected system:
 - Single source of truth per data type
 - Explicit behavior, no magic
 - Adding a client doesn't require changing others
+
+**ML/AI:**
+- Backend computes embeddings/analysis, clients receive
+- Model selection based on tested trade-offs
+- Expensive computations cached (embeddings, transcriptions)
+- Sync for <2s operations, async for longer
+- Started with simple infra (pgvector before Pinecone)
+- Research done before adopting new tech
+
+**Process:**
+- Researched best practices when uncertain
+- Diagrammed data flow before coding
+- Built trade-off tables for major decisions
 </success_criteria>
