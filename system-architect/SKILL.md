@@ -360,46 +360,59 @@ Request → Check DB (persisted cache) → Hit? Return
 </ml_ai_principles>
 
 <research_workflow>
-## Research Workflow (Perplexity/WebSearch)
+## Research Workflow (MANDATORY)
 
-When uncertain about best practices, research before deciding.
+**YOU MUST use WebSearch tool when:**
+- Introducing new technology/library
+- Uncertain about best practice
+- Making performance-critical decisions
+- Security-sensitive designs
+- Cost-sensitive architecture (need to estimate at scale)
+- User asks "what's the best way to..."
 
-**Step 1: Identify the question**
+**DO NOT guess or rely on training data for current best practices. SEARCH FIRST.**
+
+**Step 1: Formulate specific query**
 ```
 Bad: "How do I do embeddings?"
-Good: "Embedding storage strategies for mobile apps with offline search 2024"
+Good: "pgvector vs pinecone production experience 2024"
 ```
 
-**Step 2: Search for current practices**
-```
-WebSearch: "[specific topic] best practices 2024"
-WebSearch: "[technology] production experience"
-WebSearch: "[pattern] vs [alternative] when to use"
-```
+**Step 2: Actually execute searches**
+Use WebSearch tool NOW with queries like:
+- "[specific topic] best practices 2024"
+- "[technology] vs [alternative] production"
+- "[pattern] anti-patterns lessons learned"
+- "[library] problems issues github"
 
-**Step 3: Look for war stories**
+**Step 3: Search for failure stories**
 ```
-WebSearch: "[technology] problems production"
-WebSearch: "[pattern] anti-patterns lessons learned"
+WebSearch: "[technology] failed production postmortem"
+WebSearch: "[pattern] mistakes learned"
 ```
 
 **Step 4: Synthesize into trade-off table**
-| Option | Source Says | Applies to Us? |
-|--------|-------------|----------------|
-| A | Fast but memory-heavy | Yes, we have memory |
-| B | Slower but reliable | Maybe, need to test |
+| Option | Source Says | Applies Here? |
+|--------|-------------|---------------|
+| A | Fast but memory-heavy | Yes |
+| B | Reliable but slower | Maybe |
 
-**Step 5: Decide with evidence**
-Document: "We chose X because [research showed Y], and our constraints are [Z]."
+**Step 5: Recommend with citations**
+"Based on [source], I recommend X because Y. The alternative Z was rejected because [source showed problem]."
 
-**When to research:**
-- New library/framework being introduced
-- Performance-critical architecture
-- Security-sensitive decisions
-- "I've heard conflicting advice about this"
-- Cost-sensitive (need to estimate at scale)
+**Example - triggered automatically:**
+```
+User: "Should we use Pinecone or pgvector?"
 
-**Rule:** 15 minutes of research can save days of wrong implementation.
+You MUST:
+1. WebSearch "pgvector vs pinecone 2024 comparison"
+2. WebSearch "pgvector production experience scale"
+3. WebSearch "pinecone cost production"
+4. Synthesize findings
+5. Recommend with evidence
+```
+
+**Rule:** If you're about to write "typically" or "generally" about current tech, STOP and WebSearch instead.
 </research_workflow>
 
 <thinking_process>
