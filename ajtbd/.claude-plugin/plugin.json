@@ -1,0 +1,19 @@
+{
+  "name": "ajtbd",
+  "version": "1.0.0",
+  "description": "Advanced Jobs To Be Done methodology plugin - analyze product risks, find market segments, generate landing pages using AJTBD framework",
+  "author": {
+    "name": "AJTBD Team",
+    "url": "https://zamesin.ru/producthowto/"
+  },
+  "keywords": [
+    "product",
+    "ajtbd",
+    "jtbd",
+    "jobs-to-be-done",
+    "segmentation",
+    "product-market-fit",
+    "risk-analysis",
+    "landing-pages"
+  ]
+}
