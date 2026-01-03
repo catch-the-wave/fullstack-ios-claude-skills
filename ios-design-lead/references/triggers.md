@@ -117,4 +117,90 @@ Model (SwiftData)
 
 Never rely on haptics alone — always visual + auditory alternatives.
 </trigger>
+
+<trigger domain="macos-navigation">
+**NavigationSplitView (macOS Standard)**
+
+```swift
+NavigationSplitView {
+    Sidebar()
+} content: {
+    ContentList()
+} detail: {
+    DetailView()
+}
+.navigationSplitViewColumnWidth(min: 180, ideal: 220, max: 300)
+```
+
+Use for all macOS apps. Replaces iOS TabView/NavigationStack patterns.
+Two-column or three-column layouts. Add `.inspector()` for right panels.
+</trigger>
+
+<trigger domain="keyboard-shortcuts">
+**Keyboard Shortcuts (macOS)**
+
+```swift
+Button("New Item") { createItem() }
+    .keyboardShortcut("n", modifiers: .command)
+
+Button("Delete") { deleteItem() }
+    .keyboardShortcut(.delete, modifiers: .command)
+
+// Toggles with ⌘⇧
+Button("Toggle Sidebar") { }
+    .keyboardShortcut("s", modifiers: [.command, .shift])
+```
+
+**Standard (automatic):** ⌘C copy, ⌘V paste, ⌘Z undo, ⌘Q quit, ⌘W close, ⌘, settings
+
+Every primary action needs a shortcut. Mac users expect keyboard-first UX.
+</trigger>
+
+<trigger domain="responsive-macos">
+**Responsive Window Layouts**
+
+```swift
+// Adaptive grid (Notion-style)
+LazyVGrid(columns: [
+    GridItem(.adaptive(minimum: 200, maximum: 400))
+]) {
+    ForEach(items) { CardView(item: $0) }
+}
+
+// Collapsible sidebar
+@State private var columnVisibility: NavigationSplitViewVisibility = .all
+
+NavigationSplitView(columnVisibility: $columnVisibility) {
+    Sidebar()
+} detail: {
+    Detail()
+}
+.navigationSplitViewColumnWidth(min: 180, ideal: 220, max: 300)
+
+// Window constraints
+.frame(minWidth: 700, minHeight: 500)
+```
+
+Test at: 700px, 1000px, 1400px widths. Nothing should break.
+</trigger>
+
+<trigger domain="macos-hover">
+**Hover States (macOS)**
+
+```swift
+@State private var isHovered = false
+
+Button { } label: {
+    Text("Hover me")
+        .background(isHovered ? Color.accentColor.opacity(0.1) : .clear)
+}
+.onHover { hovering in
+    withAnimation(.spring(duration: 0.2)) {
+        isHovered = hovering
+    }
+}
+```
+
+Hover is the macOS equivalent of iOS long-press reveal. Use for secondary info, quick actions.
+</trigger>
 </triggers>

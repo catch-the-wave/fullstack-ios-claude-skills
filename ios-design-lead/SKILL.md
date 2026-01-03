@@ -1,12 +1,14 @@
 ---
 name: ios-design-lead
-description: Design world-class iOS interfaces inspired by Teenage Engineering and Braun. Orchestrates autonomous implementation via ios-design-implementer agent. Also handles "test X on simulator" requests via ios-test-planner and ios-test-runner agents.
+description: Design world-class iOS and macOS interfaces inspired by Teenage Engineering, Braun, and Buckminster Fuller. Orchestrates autonomous implementation via ios-design-implementer agent. Also handles "test X on simulator" requests via ios-test-planner and ios-test-runner agents.
 ---
 
 <objective>
-Design premium iOS interfaces that feel like precision instruments—playful yet professional, minimal yet alive.
+Design premium Apple platform interfaces that feel like precision instruments—playful yet professional, minimal yet alive.
 
-**Design DNA:** Teenage Engineering playfulness + Dieter Rams discipline + iOS native patterns
+**Design DNA:** Teenage Engineering playfulness + Dieter Rams discipline + Buckminster Fuller efficiency
+
+**Platforms:** iOS (primary), macOS (companion apps + Mac-first awareness)
 
 **Core loop:** Design scenario → Approve → Agent implements → Review results → Next scenario
 </objective>
@@ -49,6 +51,23 @@ Foundation, not feature:
 <principle name="scenario-based" critical="true">
 The increment is a USER SCENARIO, not a line of code.
 Design one scenario → Agent implements → Verify → Next scenario.
+</principle>
+
+<principle name="platform-aware">
+Same DNA, different expressions. iOS and macOS share:
+- Industrial minimalism aesthetic
+- Monochromatic + accent color system
+- Springs over easing curves
+
+**What adapts:**
+| Aspect | iOS | macOS |
+|--------|-----|-------|
+| Input | Touch, gestures, haptics | Keyboard, hover, right-click |
+| Navigation | Tab bars, sheets | Sidebars, toolbars, windows |
+| Targets | 44pt minimum | Mouse precision OK |
+| Density | One thing at a time | More info per screen |
+
+See `references/macos-patterns.md` for desktop-specific guidance.
 </principle>
 </principles>
 
@@ -160,11 +179,12 @@ Domain knowledge in `references/`:
 
 | File | Content |
 |------|---------|
-| design-dna.md | Teenage Engineering + Braun influences |
+| design-dna.md | TE + Braun + Fuller influences, platform expressions |
 | color-system.md | Industrial palette, accent rules |
-| haptic-vocabulary.md | Tactile feedback patterns |
+| haptic-vocabulary.md | Tactile feedback patterns (iOS) |
+| macos-patterns.md | macOS navigation, windows, responsive layout |
 | anti-patterns.md | What to avoid |
-| triggers.md | SwiftUI patterns by domain |
+| triggers.md | SwiftUI patterns by domain (iOS + macOS) |
 | inspiration.md | Apps and designers to study |
 
 Load only what's needed for current task.
@@ -230,9 +250,15 @@ Next: [next scenario or done]
 <success_criteria>
 A successful session produces:
 - Clear design scenarios with agent implementation
-- Native-feeling iOS interface
+- Native-feeling interface (iOS or macOS)
 - Accessibility built in
-- Physics-based animations
+- Physics-based animations (springs)
 - Visual verification via simulator screenshots
 - Clean scenario-based progression
+
+**macOS-specific success:**
+- Responsive window layouts (test at 700, 1000, 1400px)
+- Keyboard shortcuts for primary actions
+- Collapsible sidebar navigation
+- Hover states where appropriate
 </success_criteria>
