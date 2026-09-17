@@ -151,11 +151,29 @@ What would you like to do?
 5. Audit accessibility
 6. Polish microinteractions
 7. Review code for issues
-8. **Test on simulator** (generates flows, runs tests)
-9. Something else
+8. **Slop audit** — run visual-slop checklist, then distill/quiet/typeset
+9. **Test on simulator** (generates flows, runs tests)
+10. Something else
 
 **Response determines focus.** Design tasks use ios-design-implementer. Test tasks use ios-test-planner → ios-test-runner.
 </intake>
+
+<refinement_modes>
+When iteratively steering an existing design, use these named modes. Each maps to a specific lens from `visual-slop.md`:
+
+| Mode | Load | What it does |
+|------|------|-------------|
+| **audit** | visual-slop.md | Run full slop checklist. Report SLOP items only. |
+| **distill** | visual-slop.md + anti-patterns.md | Remove elements that aren't earning their place. Kill decoration, reduce layers. |
+| **quieter** | visual-slop.md (color, layout) | Reduce visual weight — less contrast variation, fewer competing elements, more breathing room. |
+| **bolder** | visual-slop.md (typography, color) | Increase visual confidence — stronger type hierarchy, more decisive accent usage, tighter spacing. |
+| **typeset** | visual-slop.md (typography) | Fix type hierarchy: size, weight, spacing. Ensure 3-tier system (heading/body/caption). |
+| **delight** | haptic-vocabulary.md, triggers.md | Add one meaningful microinteraction — haptic + animation paired precisely. |
+
+**Chain for pre-ship polish:** `audit → distill → quieter (or bolder) → typeset → delight`
+
+When user says any of these words without context, apply the mode to the most recently discussed component.
+</refinement_modes>
 
 <routing>
 | Response | Focus | Agent(s) |
@@ -167,25 +185,27 @@ What would you like to do?
 | 5, "accessibility" | A11y audit | ios-design-implementer |
 | 6, "microinteraction" | Polish | ios-design-implementer |
 | 7, "review", "audit" | Code review | ios-design-implementer |
-| 8, "test", "verify", "simulator" | **Test automation** | ios-test-planner → ios-test-runner |
-| 9, other | Clarify, then route | — |
+| 8, "slop", "slop audit" | **Visual slop audit + refinement** | Load visual-slop.md → ios-design-implementer |
+| 9, "test", "verify", "simulator" | **Test automation** | ios-test-planner → ios-test-runner |
+| 10, other | Clarify, then route | — |
 
-**For options 1-7:** Load relevant references, then spawn ios-design-implementer.
-**For option 8:** Follow test workflow below.
+**For options 1-8:** Load relevant references, then spawn ios-design-implementer.
+**For option 9:** Follow test workflow below.
 </routing>
 
 <references>
 Domain knowledge in `references/`:
 
-| File | Content |
-|------|---------|
-| design-dna.md | TE + Braun + Fuller influences, platform expressions |
-| color-system.md | Industrial palette, accent rules |
-| haptic-vocabulary.md | Tactile feedback patterns (iOS) |
-| macos-patterns.md | macOS navigation, windows, responsive layout |
-| anti-patterns.md | What to avoid |
-| triggers.md | SwiftUI patterns by domain (iOS + macOS) |
-| inspiration.md | Apps and designers to study |
+| File | Content | Load when |
+|------|---------|-----------|
+| design-dna.md | TE + Braun + Fuller influences, platform expressions | Always |
+| color-system.md | Industrial palette, accent rules | Color decisions |
+| haptic-vocabulary.md | Tactile feedback patterns (iOS) | Adding haptics/motion |
+| macos-patterns.md | macOS navigation, windows, responsive layout | macOS work |
+| anti-patterns.md | What to avoid (architecture + code level) | Design review |
+| visual-slop.md | Enumerable iOS slop checklist — typography, color, layout, motion, UX writing | Pre-ship audit or refinement mode |
+| triggers.md | SwiftUI patterns by domain (iOS + macOS) | Implementation |
+| inspiration.md | Apps and designers to study | New design work |
 
 Load only what's needed for current task.
 </references>
