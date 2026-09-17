@@ -1,0 +1,152 @@
+# Codex Skills Configuration — auto-generated from ~/Skills/
+# Managed via skills.sh or manually. All skills are enabled by default.
+# Paths resolve through ~/.agents/skills → ~/Skills/ symlink.
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/product/pricing-strategy/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/design/stitch-design-taste/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/design/industrial-brutalist-ui/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/design/ui-ux-designer/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/design/design-taste-frontend/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/design/minimalist-ui/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/design/gpt-taste/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/design/high-end-visual-design/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/design/redesign-existing-projects/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/design/image-to-code/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/dev/system-architect/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/dev/remotion-best-practices/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/dev/axiom-ios-data/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/dev/ios-design-lead/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/dev/swiftui-animation/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/dev/swiftui-expert-skill/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/research/triz/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/research/find-skills/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/research/audit-prompt-injection/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/research/aso-audit/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/research/triz-product-architect/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/research/morphological-analysis-triz/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/research/ui-architecture-review/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/misc/full-output-enforcement/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/misc/copy-editing/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/misc/algorithmic-art/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/misc/onboard/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/misc/orchestration/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/.nmt/Skills/claude/nmt-update/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/.nmt/Skills/claude/nmt-market-research/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/.nmt/Skills/claude/nmt-product-requirements/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/.nmt/Skills/claude/nmt-chat/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/.nmt/Skills/claude/nmt-diagnose/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/.nmt/Skills/claude/nmt-analyze-interviews/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/.nmt/Skills/claude/nmt-craft-value-proposition/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/.nmt/Skills/claude/nmt-craft-go-to-market/SKILL.md"
+
+[[skills.config]]
+enabled = true
+path = "/Users/Vektor/Skills/product/ajtbd/skills/ajtbd-methodology/SKILL.md"
+
